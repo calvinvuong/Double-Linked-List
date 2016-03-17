@@ -16,11 +16,18 @@ public class LList implements List{
     
     // returns string representation of the linked list
     public String toString(){
+	// String retStr = "";
+	// DLLNode currentDLLNode = list;
+	// while ( currentDLLNode.getValue() != null ){
+	//     retStr += currentDLLNode.getValue() + ", ";
+	//     currentDLLNode = currentDLLNode.getNext();
+	// }
+	// return retStr;
 	String retStr = "";
-	DLLNode currentDLLNode = list;
-	while ( currentDLLNode.getValue() != null ){
-	    retStr += currentDLLNode.getValue() + ", ";
-	    currentDLLNode = currentDLLNode.getNext();
+	DLLNode tmp = list; 
+	while( tmp != null ) {
+	    retStr += tmp.getValue() + "->";
+	    tmp = tmp.getNext();
 	}
 	return retStr;
     }
@@ -55,7 +62,7 @@ public class LList implements List{
 	}
 	else if ( i == size() ){
 	    DLLNode newNode = new DLLNode(s, getNode(i-1), null);
-	    getNode(i-1).setNext( newNode );
+	    getNode(i-1).setNext(newNode);
 	}
 	else {
 	    DLLNode newNode = new DLLNode(s, getNode(i).getBefore(), getNode(i));
