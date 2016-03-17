@@ -1,26 +1,24 @@
 // Calvin Vuong
 // APCS2 pd10
-// HW13 -- LoList, LoLit
-// 2016-03-15
+// HW14b -- On the DLL
+// 2016-03-16
 
 public class LList implements List{
 
-    private DLLNode head;
-    private DLLNode tail;
+    private DLLNode list;
     private int size;
     
     // default constructor
     public LList(){
-	head = null;
-	tail = null;
+	list = new DLLNode(null, null, null);
 	size = 0;
     }
     
     // returns string representation of the linked list
     public String toString(){
 	String retStr = "";
-	DLLNode currentDLLNode = head;
-	while ( currentDLLNode != null ){
+	DLLNode currentDLLNode = list;
+	while ( currentDLLNode.getValue() != null ){
 	    retStr += currentDLLNode.getValue() + ", ";
 	    currentDLLNode = currentDLLNode.getNext();
 	}
@@ -35,7 +33,13 @@ public class LList implements List{
     // adds String x to the beginning of the list
     // returns true
     public boolean add(String x){
-	head = new DLLNode(x, head, head); // make a new list by creating a new node that points to the old list
+	DLLNode newNode = new DLLNode(x, null, list);
+
+	if ( size() > 0 )
+	    list.setBefore( newNode );
+	
+	list = newNode; // make a new list by creating a new node that points to the old list
+	
 	size += 1;
 	return true;
     }
@@ -45,12 +49,19 @@ public class LList implements List{
 	if ( i < 0 || i > size() )
 	    throw new IndexOutOfBoundsException();
 	
-	if ( i == 0 )
+	if ( i == 0 ){
 	    add(s);
+	    return;
+	}
+	else if ( i == size() ){
+	    DLLNode newNode = new DLLNode(s, getNode(i-1), null);
+	    getNode(i-1).setNext( newNode );
+	}
 	else {
-	    DLLNode alterNode = getNode(i-1); // node whose pointer you are altering
-	    DLLNode oldPointer = alterNode.getNext(); // old pointer to assign to new node
-	    alterNode.setNext( new DLLNode( s, alterNode, oldPointer ) ); // link old pointer to new node, and then link new pointer to element before
+	    DLLNode newNode = new DLLNode(s, getNode(i).getBefore(), getNode(i));
+	    getNode(i).getBefore().setNext( newNode );
+	    newNode.getNext().setBefore( newNode );
+	    
 	}
 	size += 1;
     }
@@ -62,14 +73,14 @@ public class LList implements List{
 
 	DLLNode removed = getNode(i);
 
-	if ( i == 0 ) // special case for index 0
-	    head = getNode(1);        
+	
+	if ( i == 0 ){ // special case for index 0
+	    list = getNode(1);
+	    list.setBefore(null);
+	}
 	else {
-	    DLLNode before = getNode(i-1);
-	    DLLNode after = getNode(i+1);
-	    
-	    before.setNext( after ); // connect node at index i-1 to node at index i+1
-	    // node at index i gets destroyed
+	    removed.getBefore().setNext( removed.getNext() );
+	    removed.getNext().setBefore( removed.getBefore() );
 	}
 	size -= 1;
 	return removed.getValue();
@@ -80,7 +91,7 @@ public class LList implements List{
 	if ( i < 0 || i >= size() )
 	    throw new IndexOutOfBoundsException();
 	
-	DLLNode currentDLLNode = head;
+	DLLNode currentDLLNode = list;
 	for ( int k = 0; k < i; k++ ){
 	    currentDLLNode = currentDLLNode.getNext(); // keep cdr-ing unitl necessary element becomes the car
 	}

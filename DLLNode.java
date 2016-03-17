@@ -1,7 +1,7 @@
-// Calvin Vuong
+// Team CVSA -- Shanjeed Ali and Calvin Vuong
 // APCS2 pd10
-// HW12a -- We Got a Big Ol' Convoy...
-// 2016-03-14
+// HW14a -- On the DLL
+// 2016-03-16
 
 public class DLLNode{
 
