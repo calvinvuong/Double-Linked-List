@@ -16,15 +16,8 @@ public class LList implements List{
     
     // returns string representation of the linked list
     public String toString(){
-	// String retStr = "";
-	// DLLNode currentDLLNode = list;
-	// while ( currentDLLNode.getValue() != null ){
-	//     retStr += currentDLLNode.getValue() + ", ";
-	//     currentDLLNode = currentDLLNode.getNext();
-	// }
-	// return retStr;
 	String retStr = "";
-	DLLNode tmp = list; 
+	DLLNode tmp = list;
 	while( tmp != null ) {
 	    retStr += tmp.getValue() + ", ";
 	    tmp = tmp.getNext();
