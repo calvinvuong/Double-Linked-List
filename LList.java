@@ -85,6 +85,9 @@ public class LList implements List{
 	    list = getNode(1);
 	    list.setBefore(null);
 	}
+	else if ( i == size-1){ // if you are dealing with last index
+	    removed.getBefore().setNext(null);
+	}
 	else {
 	    removed.getBefore().setNext( removed.getNext() );
 	    removed.getNext().setBefore( removed.getBefore() );
