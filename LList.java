@@ -35,7 +35,7 @@ public class LList implements List{
     // adds String x to the beginning of the list
     // returns true
     public boolean add(String x){
-	head = new DLLNode(x, head, head.getNext()); // make a new list by creating a new node that points to the old list
+	head = new DLLNode(x, head, head); // make a new list by creating a new node that points to the old list
 	size += 1;
 	return true;
     }
