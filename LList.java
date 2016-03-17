@@ -26,7 +26,7 @@ public class LList implements List{
 	String retStr = "";
 	DLLNode tmp = list; 
 	while( tmp != null ) {
-	    retStr += tmp.getValue() + ",";
+	    retStr += tmp.getValue() + ", ";
 	    tmp = tmp.getNext();
 	}
 	return retStr;
