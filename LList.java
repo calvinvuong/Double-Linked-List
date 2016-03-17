@@ -5,19 +5,21 @@
 
 public class LList implements List{
 
-    private DLLNode list;
+    private DLLNode head;
+    private DLLNode tail;
     private int size;
     
     // default constructor
     public LList(){
-	list = null;
+	head = null;
+	tail = null;
 	size = 0;
     }
     
     // returns string representation of the linked list
     public String toString(){
 	String retStr = "";
-	DLLNode currentDLLNode = list;
+	DLLNode currentDLLNode = head;
 	while ( currentDLLNode != null ){
 	    retStr += currentDLLNode.getValue() + ", ";
 	    currentDLLNode = currentDLLNode.getNext();
@@ -33,7 +35,7 @@ public class LList implements List{
     // adds String x to the beginning of the list
     // returns true
     public boolean add(String x){
-	list = new DLLNode(x, list); // make a new list by creating a new node that points to the old list
+	head = new DLLNode(x, head, head.getNext()); // make a new list by creating a new node that points to the old list
 	size += 1;
 	return true;
     }
@@ -48,7 +50,7 @@ public class LList implements List{
 	else {
 	    DLLNode alterNode = getNode(i-1); // node whose pointer you are altering
 	    DLLNode oldPointer = alterNode.getNext(); // old pointer to assign to new node
-	    alterNode.setNext( new DLLNode( s, oldPointer ) ); // link old pointer to new node, and then link new pointer to element before
+	    alterNode.setNext( new DLLNode( s, alterNode, oldPointer ) ); // link old pointer to new node, and then link new pointer to element before
 	}
 	size += 1;
     }
@@ -61,7 +63,7 @@ public class LList implements List{
 	DLLNode removed = getNode(i);
 
 	if ( i == 0 ) // special case for index 0
-	    list = getNode(1);        
+	    head = getNode(1);        
 	else {
 	    DLLNode before = getNode(i-1);
 	    DLLNode after = getNode(i+1);
@@ -78,7 +80,7 @@ public class LList implements List{
 	if ( i < 0 || i >= size() )
 	    throw new IndexOutOfBoundsException();
 	
-	DLLNode currentDLLNode = list;
+	DLLNode currentDLLNode = head;
 	for ( int k = 0; k < i; k++ ){
 	    currentDLLNode = currentDLLNode.getNext(); // keep cdr-ing unitl necessary element becomes the car
 	}

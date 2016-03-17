@@ -10,14 +10,14 @@ public class DLLNode{
     private DLLNode pointern; // points to node next
 
     // default constructor
-    public LLNode(){
+    public DLLNode(){
 	value = "default";
 	pointerb = null;
 	pointern = null;
     }
     
     // overloaded constructor, sets value to val and pointern to next
-    public LLNode(String val, LLNode before, LLNode next){
+    public DLLNode(String val, DLLNode before, DLLNode next){
 	this();
 	value = val;
 	pointerb = before;
@@ -38,27 +38,27 @@ public class DLLNode{
     }
 
     // returns the pointer to the next node
-    public LLNode getNext(){
+    public DLLNode getNext(){
 	return pointern;
     }
 
     // sets the value of the next node to next
     // returns the old node
-    public LLNode setNext(LLNode next){
-	LLNode old = pointern;
+    public DLLNode setNext(DLLNode next){
+	DLLNode old = pointern;
 	pointern = next;
 	return old;
     }
 
     // returns the pointer to the before node
-    public LLNode getBefore(){
+    public DLLNode getBefore(){
 	return pointerb;
     }
 
     // sets the value of the next node to next
     // returns the old node
-    public LLNode setBefore(LLNode next){
-	LLNode old = pointerb;
+    public DLLNode setBefore(DLLNode next){
+	DLLNode old = pointerb;
 	pointerb = next;
 	return old;
     }
