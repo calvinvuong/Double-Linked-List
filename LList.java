@@ -1,7 +1,7 @@
-// Calvin Vuong
+// Team CVSA -- Shanjeed Ali and Calvin Vuong
 // APCS2 pd10
 // HW14b -- On the DLL
-// 2016-03-16
+// 2016-03-17
 
 public class LList implements List{
 
