@@ -15,7 +15,7 @@ public class DLLNode<T> {
 
 
     // constructor -- initializes instance vars
-    public DLLNode( T value, DLLNode prev, DLLNode next ) {
+    public DLLNode( T value, DLLNode<T> prev, DLLNode<T> next ) {
 	_cargo = value;
 	_nextNode = next;
 	_prevNode = prev;
@@ -38,14 +38,14 @@ public class DLLNode<T> {
 	return foo;
     }
 
-    public DLLNode setNext( DLLNode newNext ) {
-	DLLNode foo = getNext();
+    public DLLNode<T> setNext( DLLNode<T> newNext ) {
+	DLLNode<T> foo = getNext();
 	_nextNode = newNext;
 	return foo;
     }
 
-    public DLLNode setPrev( DLLNode newPrev ) {
-	DLLNode foo = getPrev();
+    public DLLNode<T> setPrev( DLLNode<T> newPrev ) {
+	DLLNode<T> foo = getPrev();
 	_prevNode = newPrev;
 	return foo;
     }
