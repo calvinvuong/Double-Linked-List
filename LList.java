@@ -1,3 +1,8 @@
+// Team CVSA -- Shanjeed Ali and Calvin Vuong
+// APCS2 pd10
+// HW15 -- Generically Speaking...
+// 2016-03-18
+
 /*****************************************************
  * class LList
  * Implements a linked list

@@ -1,3 +1,8 @@
+// Team CVSA -- Shanjeed Ali and Calvin Vuong
+// APCS2 pd10
+// HW15 -- Generically Speaking...
+// 2016-03-18
+
 /*****************************************************
  * class DLLNode
  * Implements a node, for use in lists and other container classes.
